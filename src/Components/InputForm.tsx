@@ -17,7 +17,7 @@ const InputForm:React.FC<Props> = ({todo,setTodo,handleAdd}) => {
     inputRef.current?.blur();
     }}>
     <input type="input"
-    ref={inputRef} 
+    ref={inputRef}
     value={todo}
     onChange={
         (e)=>setTodo(e.target.value)
@@ -27,7 +27,6 @@ const InputForm:React.FC<Props> = ({todo,setTodo,handleAdd}) => {
         <button className='input_submit' type='submit'>
             Go
         </button>
-
     </form>
   )
 }
