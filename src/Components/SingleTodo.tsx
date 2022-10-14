@@ -28,16 +28,31 @@ const SingleTodo:React.FC<Props> = ({todo,todos,setTodos}) => {
         todo.id !== id
         ))
     }
+
+    const handleEdit = (e:React.FormEvent, id:number)=>{
+        e.preventDefault();
+        setTodos(
+            todos.map((todo)=>
+            (todo.id===id?{...todo, todo:editTodo}:todo)
+            )
+        );
+        setEdit(false)
+    }
     
   return (
-    <form className='todo_form'>
-        {todo.isDone?
-            (
-                <s className='todo_form--text'>{todo.todo}</s>
-            ):(
-                <span className='todo_form--text'>{todo.todo}</span>
-            )
-        };
+    <form className='todo_form' onSubmit={(e)=>handleEdit(e,todo.id)}>
+        {
+            edit ? (
+                <input value={editTodo} 
+                onChange={(e)=>setEditTodo(e.target.value)} 
+                className='todo_form--text'/>
+                ):todo.isDone?
+                (
+                    <s className='todo_form--text'>{todo.todo}</s>
+                ):(
+                    <span className='todo_form--text'>{todo.todo}</span>
+                )
+        }
 
         <div>
             <span className="icon" 

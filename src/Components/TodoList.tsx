@@ -12,12 +12,12 @@ const TodoList:React.FC<Props> = ( {todos,setTodos} ) => {
   return (
     <div className='todos'>{
       todos.map(todo=> (
-        <li><SingleTodo
+        <div><SingleTodo
         todo={todo}
         key={todo.id}
         todos={todos}
-        setTodos={setTodos}/>
-        </li>
+        setTodos={setTodos}/></div>
+    
       ))
     }</div>
   )
